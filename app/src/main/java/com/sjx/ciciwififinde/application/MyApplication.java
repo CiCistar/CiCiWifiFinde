@@ -7,9 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by gsy on 17/10/16.
+ * 应用的application，初始化必要信息
  */
-
 public class MyApplication extends Application {
 
     @Override
@@ -18,6 +17,6 @@ public class MyApplication extends Application {
         SharedPreferenceUtil.setContext(this);
         Map<String, String> origin = new HashMap<>();
         origin.put("root", "123456");
-        SharedPreferenceUtil.save(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_NAME_SP, origin);
+        SharedPreferenceUtil.save(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_SP, origin);
     }
 }

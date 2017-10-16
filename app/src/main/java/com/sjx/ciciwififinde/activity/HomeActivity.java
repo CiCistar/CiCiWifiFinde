@@ -23,16 +23,23 @@ import com.sjx.ciciwififinde.utils.DimenUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 主界面，显示wifi list
+ */
 public class HomeActivity extends Activity {
 
     public static final String WIFI_INFO_KEY = "wifi_info_key";
-    private ListView mWifiList;
-    private TextView mTvListBtn;
-    private TextView mTvMapBtn;
-    private MapView mMapView;
-    private View mCurrentIndex;
-    private AMap mAMap;
-    private List<WifiInfoBean> mWifiInfoList = new ArrayList<>();
+    private ListView mWifiList;                                     // 无线网络列表
+    private TextView mTvListBtn;                                    // 列表按钮，点击切换到list
+    private TextView mTvMapBtn;                                     // 地图按钮，点击切换到地图
+    private MapView mMapView;                                       // 地图view
+    private View mCurrentIndex;                                     // 当前的位置
+    private AMap mAMap;                                             // 地图
+    private List<WifiInfoBean> mWifiInfoList;                       // 无线信息
+
+    {
+        mWifiInfoList = new ArrayList<>();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +51,9 @@ public class HomeActivity extends Activity {
         initListData();
     }
 
+    /**
+     * 初始化list数据，这里用假数据代替
+     */
     private void initListData() {
         for (int i = 0; i < 10; i++) {
             WifiInfoBean bean = new WifiInfoBean();
@@ -51,11 +61,13 @@ public class HomeActivity extends Activity {
             bean.bssid = "0000:0000:0000:0000";
             mWifiInfoList.add(bean);
         }
-
         WifiListAdapter adapter = new WifiListAdapter(this, mWifiInfoList);
         mWifiList.setAdapter(adapter);
     }
 
+    /**
+     * 设置点击事件
+     */
     private void setOnclick() {
         mCurrentIndex.setOnClickListener(new LocationIndex());
         mTvListBtn.setOnClickListener(new OnClickListener() {
@@ -93,6 +105,9 @@ public class HomeActivity extends Activity {
         });
     }
 
+    /**
+     * 初始化控件
+     */
     private void initView() {
         mWifiList = findViewById(R.id.lv_wifi);
         mTvListBtn = findViewById(R.id.tv_list);
@@ -103,6 +118,11 @@ public class HomeActivity extends Activity {
         mAMap = mMapView.getMap();
     }
 
+    /**
+     * 以动画形式设置list是否显示
+     *
+     * @param visible true 显示，false 不显示
+     */
     private void setWifiListVisible(boolean visible) {
         mWifiList.animate()
             .translationX(visible ? 0 : -DimenUtil.SCREEN_WIDTH)
@@ -111,6 +131,12 @@ public class HomeActivity extends Activity {
             .start();
     }
 
+    /**
+     * 以动画形式设置地图是否显示
+     * 动画结束后才设置定位按钮的显示状态
+     *
+     * @param visible true 显示，false 不显示
+     */
     private void setMapVisible(final boolean visible) {
         mMapView.animate()
             .translationX(visible ? 0 : DimenUtil.SCREEN_WIDTH)
@@ -149,12 +175,15 @@ public class HomeActivity extends Activity {
         mMapView.onSaveInstanceState(outState);
     }
 
+    /**
+     * 位置
+     */
     private class LocationIndex implements OnClickListener {
 
-        final int PLANE_MAP = 0;
-        final int SLOPING_MAP = 1;
-        int currentMode = PLANE_MAP;
-        int zoomLevel = 0;
+        final int PLANE_MAP = 0;                                            // 定位模式，当前位置，定位一次
+        final int SLOPING_MAP = 1;                                          // 定位模式，连续定位
+        int currentMode = PLANE_MAP;                                        // 当前模式
+        int zoomLevel = 0;                                                  // 缩放级别，最大19级
 
         @Override
         public void onClick(View v) {

@@ -5,9 +5,8 @@ import android.view.View;
 import com.sjx.ciciwififinde.R;
 
 /**
- * Created by gsy on 17/10/16.
+ * 连接对应的页面
  */
-
 public class ConnectionPage extends BasePager {
 
     public ConnectionPage(Context context) {
@@ -16,7 +15,6 @@ public class ConnectionPage extends BasePager {
 
     @Override
     public void initData() {
-        super.initData();
         View view = View.inflate(mContext, R.layout.layout_connection, null);
         mFlContent.removeAllViews();
         mFlContent.addView(view);

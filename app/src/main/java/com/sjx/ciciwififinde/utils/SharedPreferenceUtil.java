@@ -98,6 +98,9 @@ public class SharedPreferenceUtil {
         }
     }
 
+    /**
+     * 初始化SharedPreferenceUtil的环境，建议在application中初始化
+     */
     public static void setContext(Context context) {
         sContext = context;
     }

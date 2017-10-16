@@ -1,6 +1,5 @@
 package com.sjx.ciciwififinde.adapter;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +7,13 @@ import com.sjx.ciciwififinde.page.BasePager;
 import java.util.List;
 
 /**
- * Created by gsy on 17/10/16.
+ * ViewPager的适配器
  */
-
 public class ViewPagerAdapter extends PagerAdapter {
 
-    private List<BasePager> mViewList;
+    private List<BasePager> mViewList;                      // 界面数据
 
-    public ViewPagerAdapter(Context context, List<BasePager> views) {
+    public ViewPagerAdapter(List<BasePager> views) {
         mViewList = views;
     }
 

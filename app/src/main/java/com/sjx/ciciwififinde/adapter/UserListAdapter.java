@@ -4,9 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-/**
- * Created by gsy on 17/10/16.
- */
 
 public class UserListAdapter extends BaseAdapter{
 

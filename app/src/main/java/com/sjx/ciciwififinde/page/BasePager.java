@@ -7,34 +7,37 @@ import android.widget.FrameLayout;
 import com.sjx.ciciwififinde.R;
 
 /**
- * Created by gsy on 17/10/16.
+ * home界面ViewPager的page的基类
  */
+public abstract class BasePager {
 
-public class BasePager {
+    Context mContext;
+    FrameLayout mFlContent;
+    private View mRoot;
 
-    protected Context mContext;
-    protected FrameLayout mFlContent;
-    protected View mRoot;
-
-    public BasePager(Context context) {
+    BasePager(Context context) {
         mContext = context;
         initView();
     }
 
+    /**
+     * 初始化控件
+     */
     private void initView() {
         mRoot = LayoutInflater.from(mContext).inflate(R.layout.fragemt_content_base, null);
         mFlContent = mRoot.findViewById(R.id.fl_base_content_tag);
-
     }
 
-    public void initData() {
+    /**
+     * 初始化data，
+     */
+    public abstract void initData();
 
-    }
-
-    public void switchPage(int position) {
-
-    }
-
+    /**
+     * 返回rootView
+     *
+     * @return mRoot
+     */
     public View getRootView() {
         return mRoot;
     }
