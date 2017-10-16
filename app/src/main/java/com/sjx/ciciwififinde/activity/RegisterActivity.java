@@ -21,6 +21,7 @@ public class RegisterActivity extends Activity {
     private EditText mUserPassword;
     private EditText mPasswordConfirm;
     private View mBtnRegister;
+    private View mBtnFindPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +36,12 @@ public class RegisterActivity extends Activity {
             @Override
             public void onClick(View view) {
                 confirmRegister();
+            }
+        });
+        mBtnFindPassword.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findPassword();
             }
         });
     }
@@ -83,10 +90,33 @@ public class RegisterActivity extends Activity {
         }
     }
 
+    private void findPassword() {
+        String userName;
+        if (!TextUtils.isEmpty(mUserName.getText())) {
+            userName = mUserName.getText().toString();
+        } else {
+            Toast.makeText(this, "请输入用户名", Toast.LENGTH_LONG).show();
+            return;
+        }
+        try {
+            Map<String, String> userMap = (Map<String, String>) SharedPreferenceUtil.get(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_NAME_SP);
+            if (userMap.containsKey(userName)) {
+                Toast.makeText(this, userName + " 密码：" + userMap.get(userName), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "该用户不存在", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "findPassword e" + e.toString());
+            Toast.makeText(this, "查询失败，发生未知异常" + e.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
+
     private void initView() {
         mUserName = findViewById(R.id.et_user_name);
         mUserPassword = findViewById(R.id.et_user_password);
         mPasswordConfirm = findViewById(R.id.et_user_password_confirm);
         mBtnRegister = findViewById(R.id.btn_register);
+        mBtnFindPassword = findViewById(R.id.btn_find_password);
     }
 }
