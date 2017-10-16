@@ -1,6 +1,7 @@
 package com.sjx.ciciwififinde.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -13,6 +14,7 @@ import com.sjx.ciciwififinde.adapter.ViewPagerAdapter;
 import com.sjx.ciciwififinde.bean.WifiInfoBean;
 import com.sjx.ciciwififinde.page.BasePager;
 import com.sjx.ciciwififinde.page.ConnectionPage;
+import com.sjx.ciciwififinde.page.TopologyPager;
 import com.sjx.ciciwififinde.page.WifiDetailPager;
 import com.sjx.ciciwififinde.page.WifiHistoryPager;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
     private TextView mTvHistory;
     private TextView mTvPhone;
     private TextView mTvConnection;
+    private TextView mTvTemp;
     private WifiInfoBean mWifiInfoBean;
     private List<BasePager> mViewList = new ArrayList<>();
     private int mCurrentIndex;
@@ -58,6 +61,7 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
 
         mViewList.add(new WifiDetailPager(this));
         mViewList.add(new WifiHistoryPager(this));
+        mViewList.add(new TopologyPager(this));
         mViewList.add(new ConnectionPage(this));
         ViewPagerAdapter adapter = new ViewPagerAdapter(this, mViewList);
         mWifiViewPager.setAdapter(adapter);
@@ -97,6 +101,7 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
         mTvHistory = findViewById(R.id.tv_history);
         mTvPhone = findViewById(R.id.tv_phone);
         mTvConnection = findViewById(R.id.tv_connection);
+        mTvTemp = mTvDetail;
     }
 
     @Override
@@ -104,21 +109,31 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
         switch (view.getId()) {
             case R.id.tv_detail:
                 mCurrentIndex = 0;
+                setTextColor(mTvDetail);
                 break;
             case R.id.tv_history:
                 mCurrentIndex = 1;
+                setTextColor(mTvHistory);
                 break;
             case R.id.tv_phone:
                 mCurrentIndex = 2;
+                setTextColor(mTvPhone);
                 break;
             case R.id.tv_connection:
                 mCurrentIndex = 3;
+                setTextColor(mTvConnection);
                 break;
 
             default:
                 break;
         }
         switchPage();
+    }
+
+    private void setTextColor(TextView view) {
+        mTvTemp.setTextColor(Color.BLACK);
+        view.setTextColor(Color.parseColor("#ff33b5e5"));
+        mTvTemp = view;
     }
 
     private void switchPage() {

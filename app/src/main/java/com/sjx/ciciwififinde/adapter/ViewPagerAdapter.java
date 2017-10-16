@@ -36,7 +36,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         View root = basePager.getRootView();
         container.addView(root);
         basePager.initData();
-        return mViewList.get(position);
+        return root;
     }
 
     @Override
