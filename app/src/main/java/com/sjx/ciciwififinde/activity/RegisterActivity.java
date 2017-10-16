@@ -15,6 +15,7 @@ import com.sjx.ciciwififinde.utils.SharedPreferenceUtil;
 import java.util.Map;
 
 public class RegisterActivity extends Activity {
+
     private static final String TAG = "RegisterActivity";
     private EditText mUserName;
     private EditText mUserPassword;
@@ -64,6 +65,10 @@ public class RegisterActivity extends Activity {
         if (userPassword.equals(passwordConfirm)) {
             try {
                 Map<String, String> userMap = (Map<String, String>) SharedPreferenceUtil.get(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_NAME_SP);
+                if (userMap.containsKey(userName)) {
+                    Toast.makeText(this, userName + " 用户已存在", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 userMap.put(userName, userPassword);
                 SharedPreferenceUtil.save(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_NAME_SP, userMap);
             } catch (Exception e) {
@@ -73,9 +78,9 @@ public class RegisterActivity extends Activity {
                 return;
             }
             Toast.makeText(this, "注册成功，请返回登录", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "密码不一致", Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     private void initView() {

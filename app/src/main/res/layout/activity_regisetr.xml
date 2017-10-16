@@ -64,7 +64,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="50dp"
-      android:hint="密码" />
+      android:hint="密码"
+      android:inputType="textPassword" />
 
   </LinearLayout>
 
@@ -85,7 +86,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="50dp"
-      android:hint="确认密码" />
+      android:hint="确认密码"
+      android:inputType="textPassword" />
   </LinearLayout>
 
   <Button
