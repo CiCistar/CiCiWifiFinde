@@ -20,12 +20,12 @@ import com.sjx.ciciwififinde.page.WifiHistoryPager;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gsy on 17/10/16.
- */
-
 public class WiFiDetailActivity extends Activity implements OnClickListener {
 
+    private static final int PAGE_FIRST = 0;
+    private static final int PAGE_SECOND = 1;
+    private static final int PAGE_THIRD = 2;
+    private static final int PAGE_FOUR = 3;
     private TextView mWifiName;
     private TextView mBssid;
     private TextView mConnected;
@@ -73,7 +73,7 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
         mTvHistory.setOnClickListener(this);
         mTvPhone.setOnClickListener(this);
         mTvConnection.setOnClickListener(this);
-        mWifiViewPager.setCurrentItem(0);
+        mWifiViewPager.setCurrentItem(PAGE_FIRST);
         mWifiViewPager.addOnPageChangeListener(new OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -108,19 +108,19 @@ public class WiFiDetailActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_detail:
-                mCurrentIndex = 0;
+                mCurrentIndex = PAGE_FIRST;
                 setTextColor(mTvDetail);
                 break;
             case R.id.tv_history:
-                mCurrentIndex = 1;
+                mCurrentIndex = PAGE_SECOND;
                 setTextColor(mTvHistory);
                 break;
             case R.id.tv_phone:
-                mCurrentIndex = 2;
+                mCurrentIndex = PAGE_THIRD;
                 setTextColor(mTvPhone);
                 break;
             case R.id.tv_connection:
-                mCurrentIndex = 3;
+                mCurrentIndex = PAGE_FOUR;
                 setTextColor(mTvConnection);
                 break;
 
