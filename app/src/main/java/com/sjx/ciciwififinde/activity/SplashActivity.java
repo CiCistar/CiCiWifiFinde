@@ -16,12 +16,11 @@ import android.widget.Toast;
 import com.sjx.ciciwififinde.R;
 
 /**
- * Created by gsy on 17/10/16.
+ * 开屏界面
  */
-
 public class SplashActivity extends Activity {
     private static final int PERMISSIONS_CODE = 1;
-    private View mTextView;
+    private View mTextView;                                             // 版本号
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +29,9 @@ public class SplashActivity extends Activity {
         initView();
     }
 
+    /**
+     * 初始化控件
+     */
     private void initView() {
         mTextView = findViewById(R.id.textView);
     }
@@ -41,7 +43,7 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * 动态存储卡申请权限
+     * 动态申请权限
      */
     public boolean hasExternalPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
@@ -70,11 +72,14 @@ public class SplashActivity extends Activity {
         }
     }
 
+    /**
+     * 跳转到下一个界面，延时2秒
+     */
     private void jumpToNext() {
         mTextView.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
         }, 2000);

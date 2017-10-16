@@ -5,9 +5,8 @@ import android.view.View;
 import com.sjx.ciciwififinde.R;
 
 /**
- * Created by gsy on 17/10/16.
+ * 拓扑图页面
  */
-
 public class TopologyPager extends BasePager {
 
     public TopologyPager(Context context) {
@@ -16,7 +15,6 @@ public class TopologyPager extends BasePager {
 
     @Override
     public void initData() {
-        super.initData();
         View view = View.inflate(mContext, R.layout.layout_topology, null);
         mFlContent.removeAllViews();
         mFlContent.addView(view);

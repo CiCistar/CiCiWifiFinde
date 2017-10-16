@@ -3,19 +3,18 @@ package com.sjx.ciciwififinde.bean;
 import android.os.Parcel;
 
 /**
- * Created by gsy on 17/10/16.
+ * 无线的信息包装类，实现Parcelable，方便bundle传输
  */
-
 public class WifiInfoBean implements android.os.Parcelable {
 
-    public String name;
-    public String bssid;
-    public boolean isConnected;
-    public String ip;
-    public String speed;
-    public String mac;
-    public String id;
-    public int strenth;
+    public String name;                                         // 无线名字
+    public String bssid;                                        // bssid
+    public boolean isConnected;                                 // 是否已连接
+    public String ip;                                           // ip
+    public String speed;                                        // 速度
+    public String mac;                                          // mac 地址
+    public String id;                                           // id
+    public int strenth;                                         // 信号强度
 
     @Override
     public int describeContents() {

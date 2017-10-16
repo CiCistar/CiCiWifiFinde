@@ -14,12 +14,15 @@ import com.sjx.ciciwififinde.callback.MyConstant;
 import com.sjx.ciciwififinde.utils.SharedPreferenceUtil;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+/**
+ * 登录界面
+ */
+public class LoginActivity extends Activity {
 
-    private View mRegisteTip;
-    private EditText mUserName;
-    private EditText mPassword;
-    private View mBtnLogin;
+    private View mRegisterTip;                      // 注册按钮
+    private EditText mUserName;                     // 用户名
+    private EditText mPassword;                     // 密码
+    private View mBtnLogin;                         // 登录按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class MainActivity extends Activity {
         setonClick();
     }
 
+    /**
+     * 设置点击事件
+     */
     private void setonClick() {
         mBtnLogin.setOnClickListener(new OnClickListener() {
             @Override
@@ -37,21 +43,28 @@ public class MainActivity extends Activity {
                 confirmPassword();
             }
         });
-        mRegisteTip.setOnClickListener(new OnClickListener() {
+        mRegisterTip.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
     }
 
+    /**
+     * 初始化控件
+     */
     private void initView() {
-        mRegisteTip = findViewById(R.id.main_register_tip);
+        mRegisterTip = findViewById(R.id.main_register_tip);
         mUserName = findViewById(R.id.et_user_name);
         mPassword = findViewById(R.id.et_user_password);
         mBtnLogin = findViewById(R.id.btn_login);
     }
 
+    /**
+     * 验证密码是否正确
+     * 赶时间，这里使用本地文件存储，后期改为服务端的数据库
+     */
     private void confirmPassword() {
         String text;
         String passWord;
@@ -68,13 +81,13 @@ public class MainActivity extends Activity {
             return;
         }
 
-        Map<String, String> loginInfo = (Map<String, String>) SharedPreferenceUtil.get(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_NAME_SP);
+        Map<String, String> loginInfo = (Map<String, String>) SharedPreferenceUtil.get(MyConstant.SAVE_FILE_KEY_SP, MyConstant.SAVE_USER_SP);
         if (loginInfo != null) {
             for (Map.Entry<String, String> user : loginInfo.entrySet()) {
                 if (text.equals(user.getKey())) {
                     if (passWord.equals(user.getValue())) {
                         Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
-                        startHomeActivity();
+                        startActivity(new Intent(this, HomeActivity.class));
                     } else {
                         Toast.makeText(this, "密码错误", Toast.LENGTH_LONG).show();
                     }
@@ -83,10 +96,6 @@ public class MainActivity extends Activity {
             }
             Toast.makeText(this, "用户名不存在", Toast.LENGTH_LONG).show();
         }
-    }
-
-    private void startHomeActivity() {
-        startActivity(new Intent(this, HomeActivity.class));
     }
 
 }

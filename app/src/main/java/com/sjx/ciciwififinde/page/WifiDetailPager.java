@@ -5,9 +5,8 @@ import android.view.View;
 import com.sjx.ciciwififinde.R;
 
 /**
- * Created by gsy on 17/10/16.
+ * 详情对应的页面
  */
-
 public class WifiDetailPager extends BasePager {
 
     public WifiDetailPager(Context context) {
@@ -16,14 +15,8 @@ public class WifiDetailPager extends BasePager {
 
     @Override
     public void initData() {
-        super.initData();
         View view = View.inflate(mContext, R.layout.layout_wifi_detail, null);
         mFlContent.removeAllViews();
         mFlContent.addView(view);
-    }
-
-    @Override
-    public void switchPage(int position) {
-        super.switchPage(position);
     }
 }

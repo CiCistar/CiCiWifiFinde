@@ -11,13 +11,12 @@ import com.sjx.ciciwififinde.bean.WifiInfoBean;
 import java.util.List;
 
 /**
- * Created by gsy on 17/10/16.
+ * 无线列表的适配器
  */
-
 public class WifiListAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private List<WifiInfoBean> mList;
+    private Context mContext;                                         // Context 上下文对象
+    private List<WifiInfoBean> mList;                                 // 数据
 
 
     public WifiListAdapter(Context context, List<WifiInfoBean> list) {
@@ -42,7 +41,7 @@ public class WifiListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.layout_wifi_list, viewGroup, false);
@@ -58,11 +57,11 @@ public class WifiListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public static class ViewHolder {
+    private static class ViewHolder {
 
-        TextView mWifiName;
-        TextView mBSSID;
-        TextView mConnection;
+        TextView mWifiName;                                         // 无线的名字
+        TextView mBSSID;                                            // BSSID
+        TextView mConnection;                                       // 连接状态
 
         public void update(WifiInfoBean wifiInfo) {
             mWifiName.setText(wifiInfo.name);
