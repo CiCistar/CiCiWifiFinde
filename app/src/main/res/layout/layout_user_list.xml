@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="10dp"
+  android:background="@drawable/shape_list_bg"
+  android:orientation="horizontal">
+
+  <TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="用户："
+    android:textColor="@color/black"
+    android:gravity="center"
+    android:layout_marginLeft="10dp"
+    android:textSize="12dp" />
+
+  <TextView
+    android:id="@+id/tv_user_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginLeft="15dp"
+    android:text="宋佳欣"
+    android:textColor="@color/black"
+    android:textSize="12dp" />
+
+  <TextView
+    android:id="@+id/tv_ip"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginLeft="15dp"
+    android:text="10.10.43.3"
+    android:textColor="@color/black"
+    android:textSize="12dp" />
+
+  <TextView
+    android:id="@+id/tv_date"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="2"
+    android:layout_marginLeft="15dp"
+    android:text="2017-10-01 18:00"
+    android:textColor="@color/black"
+    android:textSize="12dp" />
+
+</LinearLayout>
