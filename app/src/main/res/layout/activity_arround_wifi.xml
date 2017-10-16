@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/white"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_action_user" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="附近wifi"
+        android:textColor="@color/black" />
+
+      <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_action_search" />
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_action_add" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/tv_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="0.5dp"
+        android:padding="10dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center"
+        android:text="列表"
+        android:textColor="@android:color/white" />
+
+      <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray" />
+
+      <TextView
+        android:id="@+id/tv_map"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="0.5dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="地图"
+        android:textColor="@color/black" />
+    </LinearLayout>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <ListView
+        android:id="@+id/lv_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:divider="#00000000"
+        android:dividerHeight="20dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.amap.api.maps.MapView
+          android:id="@+id/map"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+
+        <TextView
+          android:id="@+id/activity_main_current_index"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_marginBottom="20dp"
+          android:layout_marginLeft="20dp"
+          android:layout_alignParentBottom="true"
+          android:background="@drawable/btn_current_index"
+          android:gravity="center"
+          android:text="定位"
+          android:textColor="@android:color/white"
+          android:textSize="11dp"
+          android:visibility="gone" />
+
+      </RelativeLayout>
+
+    </FrameLayout>
+
+  </LinearLayout>
+
+
+</RelativeLayout>
